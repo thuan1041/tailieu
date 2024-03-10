@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>This is Hello</title>
+</head>
+<body>
+    <body>
+        <h1>Thông tin môn học</h1>
+        <!-- "id":"1",
+        "name":"Cơ sở dữ liệu",
+        "course_type":"Cơ sở",
+        "semester":"HK1-2023-2024",
+        "department":"K.CNTT" -->
+        <form id="deleteForm" action="/delete" method="POST" >
+            <table border="true">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên cơ sở</th>
+                        <th>Kiểu cơ sở</th>
+                        <th>Học kỳ</th>
+                        <th>Phòng ban</th>
+                        <th>Hình ảnh</th>
+                        <th>Check</th>
+                    </tr>
+                    <% 
+                        var idMonHoc = null;
+                    for (let i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].id %></td>
+                            <td><%= data[i].name %></td>
+                            <td><%= data[i].course_type %></td>
+                            <td><%= data[i].semester %></td>
+                            <td><%= data[i].department %></td>
+                            <td><img src="<%= data[i].image %>" alt="avt_<%= data[i].id %>" width="48" height="48" /></td>
+                            <td><input type="checkbox" id="check" name="checked" value="<%= data[i].id %>"/></td>
+                        </tr>
+                    <% } %>
+            </table>
+            <button type="submit">Delete</button>
+        </form>
+
+
+        <form action="/save" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" placeholder="Nhập ID">
+            </div>
+            <div>
+                <label for="name">Tên Môn Học:</label>
+                <input type="text" id="name" name="name" placeholder="Nhập tên môn học">
+            </div>
+            <div>
+                <label for="course_type">Kiểu Cơ Sở:</label>
+                <input type="text" id="course_type" name="course_type" placeholder="Nhập kiểu cơ sở">
+            </div>
+            <div>
+                <label for="semester">Học Kỳ:</label>
+                <input type="text" id="semester" name="semester" placeholder="Nhập học kỳ">
+            </div>
+            <div>
+                <label for="department">Phòng Ban:</label>
+                <input type="text" id="department" name="department" placeholder="Nhập phòng ban">
+            </div>
+            <div>
+                <label for="department">Hình ảnh:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <input type="submit" value="Thêm" class="btn-them">            
+        </form>
+        
+    </body>
+</body>
+</html>
